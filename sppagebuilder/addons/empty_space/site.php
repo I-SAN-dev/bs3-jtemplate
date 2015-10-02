@@ -21,9 +21,9 @@ function sp_empty_space_addon($atts){
 		), $atts));
 
 	//Responsive utilities
-	if($hidden_md) $class .= $class . ' sppb-hidden-md sppb-hidden-lg';
-	if($hidden_sm) $class .= $class . ' sppb-hidden-sm';
-	if($hidden_xs) $class .= $class . ' sppb-hidden-xs';
+	if($hidden_md) $class .= $class . ' hidden-md hidden-lg';
+	if($hidden_sm) $class .= $class . ' hidden-sm';
+	if($hidden_xs) $class .= $class . ' hidden-xs';
 
 	return '<div class="sppb-empty-space ' . $class . ' clearfix" style="margin-bottom:' . (int)$gap . 'px;"></div>';
 }
