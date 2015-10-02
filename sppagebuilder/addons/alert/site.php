@@ -41,10 +41,10 @@ function sp_alert_addon($atts){
 	}
 
 	$output .= '<div class="sppb-addon-content">';
-	$output .= '<div class="sppb-alert sppb-alert-' . $type . ' sppb-fade in" role="alert">';
+	$output .= '<div class="alert alert-' . $type . ' fade in" role="alert">';
 
 	if($close=='yes') {
-		$output .= '<button type="button" class="close" data-dismiss="sppb-alert"><span aria-hidden="true">&times;</span></button>';
+		$output .= '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>';
 	}
 
 	$output .= $text;
