@@ -43,15 +43,15 @@ function sp_tab_addon($atts, $content){
 	}
 	$output .= '<div class="sppb-addon-content sppb-tab">';
 	//Tab Title
-	$output .='<ul class="sppb-nav sppb-nav-' . $style . '">';
+	$output .='<ul class="nav nav-' . $style . '">';
 	foreach ($sppbTabArray as $key=>$tab) {
-		$output .='<li class="'. ( ($key==0) ? "active" : "").'"><a role="tab" data-toggle="sppb-tab">'. $tab['icon'].' '. $tab['title'] .'</a></li>';
+		$output .='<li class="'. ( ($key==0) ? "active" : "").'"><a role="tab" data-toggle="tab">'. $tab['icon'].' '. $tab['title'] .'</a></li>';
 	}
 	$output .='</ul>';
 	//Tab Contnet
-	$output .='<div class="sppb-tab-content">';
+	$output .='<div class="tab-content">';
 	foreach ($sppbTabArray as $key=>$tab) {
-		$output .='<div class="sppb-tab-pane sppb-fade'. ( ($key==0) ? " active in" : "").'">' . $tab['content'] .'</div>';
+		$output .='<div class="tab-pane fade'. ( ($key==0) ? " active in" : "").'">' . $tab['content'] .'</div>';
 	}
 	$output .='</div>';
 	$output .= '</div>';
