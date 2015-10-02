@@ -46,15 +46,15 @@ function sp_testimonial_addon($atts, $content){
 	}
 
 	$output .= '<div class="sppb-addon-content">';
-	$output .= '<div class="sppb-media">';
+	$output .= '<div class="media">';
 
 	if ($avatar) {
 		$output .= '<a target="' . $link_target . '" class="pull-'.$avatar_position.'" href="'.$link.'">';
-		$output .= '<img class="sppb-media-object" src="'.$avatar.'" width="' . $avatar_width . '" alt="'.$name.'">';
+		$output .= '<img class="media-object" src="'.$avatar.'" width="' . $avatar_width . '" alt="'.$name.'">';
 		$output .= '</a>';
 	}
 
-	$output .= '<div class="sppb-media-body">';
+	$output .= '<div class="media-body">';
 	$output .= '<blockquote>';
 	$output .= $review;
 	$output .= '<footer><strong>'.$name.'</strong> <cite>'.$company.'</cite></footer>';
