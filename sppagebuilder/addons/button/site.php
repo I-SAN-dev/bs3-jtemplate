@@ -32,7 +32,7 @@ function sp_button_addon($atts, $content){
 
 	if($margin) $style = ' style="margin:'.$margin.';"';
 
-	$output  = '<a target="' . $target . '" href="' . $url . '" class="sppb-btn sppb-btn-' . $type . ' sppb-btn-' . $size . ' ' . $block . ' ' . $class . '" ' . $style . ' role="button">' . $text . '</a>';
+	$output  = '<a target="' . $target . '" href="' . $url . '" class="btn btn-' . $type . ' btn-' . $size . ' ' . $block . ' ' . $class . '" ' . $style . ' role="button">' . $text . '</a>';
 
 	return $output;
 	
