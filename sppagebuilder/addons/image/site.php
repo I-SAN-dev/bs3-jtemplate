@@ -50,7 +50,7 @@ function sp_image_addon($atts) {
 			$output 	.= '<a target="' . $target . '" href="' . $link . '">';
 		}
 
-		$output  .= '<img class="sppb-img-responsive" src="' . $image . '" alt="'. $alt_text .'">';
+		$output  .= '<img class="img-responsive" src="' . $image . '" alt="'. $alt_text .'">';
 
 		if($link!='http://') {
 			$output 	.= '</a>';
