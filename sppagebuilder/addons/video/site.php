@@ -62,8 +62,8 @@ function sp_video_addon($atts){
 			$output .= '<'.$heading_selector.' class="sppb-addon-title" style="' . $title_style . '">' . $title . '</'.$heading_selector.'>';
 		}
 
-		$output .= '<div class="sppb-video-block sppb-embed-responsive sppb-embed-responsive-16by9">';
-		$output .= '<iframe class="sppb-embed-responsive-item" src="' . $src . '" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+		$output .= '<div class="sppb-video-block embed-responsive embed-responsive-16by9">';
+		$output .= '<iframe class="embed-responsive-item" src="' . $src . '" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
 		$output .= '</div>';
 		
 		$output .= '</div>';
