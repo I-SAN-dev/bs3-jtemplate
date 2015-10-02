@@ -85,7 +85,7 @@ function sp_feature_addon($atts){
 			if($icon_margin_top) $img_style .= 'margin-top:' . (int) $icon_margin_top . 'px;';
 			if($icon_margin_bottom) $img_style .= 'margin-bottom:' . (int) $icon_margin_bottom . 'px;';
 			$media  .= '<span style="display:inline-block;' . $img_style . ';">';
-			$media  .= '<img class="sppb-img-responsive" src="' . $feature_image . '" alt="">';
+			$media  .= '<img class="img-responsive" src="' . $feature_image . '" alt="">';
 			$media  .= '</span>';
 		}
 	}
@@ -102,7 +102,7 @@ function sp_feature_addon($atts){
 		$heading_class = '';
 
 		if( ($icon_image_position=='left') || ($icon_image_position=='right') ) {
-			$heading_class = ' sppb-media-heading';
+			$heading_class = ' media-heading';
 		}
 
 		if($title_url) $feature_title .= '<a href="'. $title_url .'">';
@@ -141,11 +141,11 @@ function sp_feature_addon($atts){
 	} else {
 
 		if($media) {
-			$output .= '<div class="sppb-media">';
+			$output .= '<div class="media">';
 			$output .= '<div class="pull-'. $icon_image_position .'">';
 			$output .= $media;
 			$output .= '</div>';
-			$output .= '<div class="sppb-media-body">';
+			$output .= '<div class="media-body">';
 			if($title) $output .= $feature_title;
 			$output .= $feature_text;
 			$output .= '</div>';
