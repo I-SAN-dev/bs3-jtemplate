@@ -31,22 +31,22 @@ function sp_carousel_addon($atts, $content){
 		$color = 'color:' . $color . ';';
 	}
 
-	$carousel_autoplay = ($autoplay)?'data-sppb-ride="sppb-carousel"':'';
+	$carousel_autoplay = ($autoplay)?'data-ride="carousel"':'';
 
-	$output  = '<div style="' . $background . $color . '" class="sppb-carousel sppb-slide ' . $class . '" ' . $carousel_autoplay . '>';
+	$output  = '<div style="' . $background . $color . '" class="carousel slide ' . $class . '" ' . $carousel_autoplay . '>';
 
 	if($controllers) {
-	$output .= '<ol class="sppb-carousel-indicators">';
+	$output .= '<ol class="carousel-indicators">';
     $output .= '</ol>';
 	}
 
-	$output .= '<div class="sppb-carousel-inner ' . $alignment . '">';
+	$output .= '<div class="carousel-inner ' . $alignment . '">';
 	$output .= AddonParser::spDoAddon($content);
 	$output	.= '</div>';
 
 	if($arrows) {
-		$output	.= '<a style="' . $color . '" class="sppb-carousel-arrow left sppb-carousel-control" role="button" data-slide="prev"><i class="fa fa-chevron-left"></i></a>';
-		$output	.= '<a style="' . $color . '" class="sppb-carousel-arrow right sppb-carousel-control" role="button" data-slide="next"><i class="fa fa-chevron-right"></i></a>';
+		$output	.= '<a style="' . $color . '" class="carousel-arrow left carousel-control" role="button" data-slide="prev"><i class="fa fa-chevron-left"></i></a>';
+		$output	.= '<a style="' . $color . '" class="carousel-arrow right carousel-control" role="button" data-slide="next"><i class="fa fa-chevron-right"></i></a>';
 	}
 	
 	$output .= '</div>';
@@ -85,7 +85,7 @@ function sp_carousel_item_addon( $atts ){
 	}
 
 	$output  .= '<div class="sppb-carousel-item-inner">';
-	$output  .= '<div class="sppb-carousel-caption">';
+	$output  .= '<div class="carousel-caption">';
 	$output  .= '<div class="sppb-carousel-pro-text">';
 
 	if(($title) || ($content) ) {
@@ -94,7 +94,7 @@ function sp_carousel_item_addon( $atts ){
         $output  .= '<p>' . $content . '</p>';
 
         if($button_text && $button_url) {
-        	$output  .= '<a href="' . $button_url . '" class="sppb-btn sppb-btn-' . $button_type . ' sppb-btn-' . $button_size . '" role="button">' . $button_text . '</a>';
+        	$output  .= '<a href="' . $button_url . '" class="btn btn-' . $button_type . ' btn-' . $button_size . '" role="button">' . $button_text . '</a>';
         }
 	}
 
