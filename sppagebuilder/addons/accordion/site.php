@@ -46,7 +46,7 @@ function sp_accordion_addon($atts, $content){
 	}
 	
 	$output .= '<div class="sppb-addon-content">';
-	$output	.= '<div class="sppb-panel-group ' . $class . '">';
+	$output	.= '<div class="panel-group ' . $class . '">';
 	$output .= AddonParser::spDoAddon($content);
 	$output .= '</div>';
 	$output .= '</div>';
@@ -73,16 +73,16 @@ function sp_accordion_item_addon( $atts ){
 		$title = '<i class="fa ' . $icon . '"></i> ' . $title;
 	}
 	
-	$output   = '<div class="sppb-panel sppb-'. $sppbAccordionStyle .'">';
+	$output   = '<div class="panel '. $sppbAccordionStyle .'">';
 
-	$output  .= '<div class="sppb-panel-heading">';
-	$output  .= '<span class="sppb-panel-title">';
+	$output  .= '<div class="panel-heading">';
+	$output  .= '<span class="panel-title">';
 	$output  .= $title;
 	$output  .= '</span>';
 	$output  .= '</div>';
 
-	$output  .= '<div class="sppb-panel-collapse">';
-	$output  .= '<div class="sppb-panel-body">';
+	$output  .= '<div class="panel-collapse">';
+	$output  .= '<div class="panel-body">';
 	$output  .= $content;
 	$output  .= '</div>';
 	$output  .= '</div>';
