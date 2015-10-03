@@ -22,6 +22,7 @@
         <folder>images</folder>
         <folder>js</folder>
         <folder>classes</folder>
+        <folder>sppagebuilder</folder>
     </files>
     <positions>
         <position>navbar</position>
