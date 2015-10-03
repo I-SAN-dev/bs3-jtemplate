@@ -49,7 +49,7 @@ function sp_feature_addon($atts){
 
 	//Reset Alignment for left and right style
 	if( ($icon_image_position=='left') || ($icon_image_position=='right') ) {
-		$alignment = 'sppb-text-' . $icon_image_position;
+		$alignment = 'text-' . $icon_image_position;
 	}
 
 	//Icon or Image
