@@ -6,9 +6,10 @@
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
  */
 //no direct accees
-defined ('_JEXEC') or die ('resticted aceess');
+defined ('_JEXEC') or die ('restricted aceess');
 
-JHtml::_('jquery.framework');
+// jQuery will be added by the template
+//JHtml::_('jquery.framework');
 
 require_once ( JPATH_COMPONENT . '/parser/addon-parser.php' );
 
@@ -51,9 +52,18 @@ $fullwidth = $page->page_layout;
         <?php } ?>
 
         <div class="page-content">
-            <?php echo AddonParser::viewAddons($content,$fullwidth); ?>
+            <?php
+            /*
+             The problem here is that the default addon parser returns html containing prefixed classes like 'sppb-row'.
+             TODO: We should write our own parser instead of preprocessing the output here
+            */
+            $addons = AddonParser::viewAddons($content,$fullwidth);
+            $addons = str_replace('sppb-row','row',$addons);
+            $addons = str_replace('sppb-col-', 'col-', $addons);
+            echo $addons ?>
         </div>
     </div>
 
 <?php
-$doc->addScript(JUri::base(true).'/components/com_sppagebuilder/assets/js/sppagebuilder.js');
+// we're going to use our own page builder js and concatenate it with our other template js files
+// $doc->addScript(JUri::base(true).'/components/com_sppagebuilder/assets/js/sppagebuilder.js');
