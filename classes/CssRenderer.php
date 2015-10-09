@@ -53,7 +53,6 @@ class CssRenderer {
         {
             $scss = '@import "templates/'.$template.self::$scssPath.'";';
             $scssc = new \Leafo\ScssPhp\Compiler();
-            $scssc->addImportPath('templates/'.$template.'/css/scss');
             $css = $scssc->compile($scss);
             file_put_contents($css_path, $css);
         }
