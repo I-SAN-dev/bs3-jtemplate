@@ -4,6 +4,10 @@
  * @author JoomShaper http://www.joomshaper.com
  * @copyright Copyright (c) 2010 - 2015 JoomShaper
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+ *
+ * @modified_by I-SAN.de Webdesign & Hosting GbR
+ * @modified_by_url http://i-san.de
+ * @modified rewrite class to use vanilla bootstrap3 instead of prefixed version
  */
 //no direct accees
 defined ('_JEXEC') or die ('resticted aceess');

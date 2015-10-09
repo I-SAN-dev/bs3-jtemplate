@@ -9,6 +9,8 @@
 
 defined('_JEXEC') or die;
 
+require_once('classes/CssRenderer.php');
+
 $app             = JFactory::getApplication();
 $doc             = JFactory::getDocument();
 $user            = JFactory::getUser();
@@ -32,6 +34,7 @@ $sitename = $app->get('sitename');
 $doc->addScript($templatePath . '/js/template.js');
 
 // Add Stylesheets
+CssRenderer::render($this->template);
 $doc->addStyleSheet($templatePath . '/css/template.css');
 
 
