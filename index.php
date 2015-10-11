@@ -31,7 +31,8 @@ $itemid   = $app->input->getCmd('Itemid', '');
 $sitename = $app->get('sitename');
 
 
-$doc->addScript($templatePath . '/js/template.js');
+//$doc->addScript($templatePath . '/js/template.js');
+//$doc->addScript($templatePath . '/js/bootstrap.js');
 
 // Add Stylesheets
 CssRenderer::render($this->template);
@@ -87,7 +88,7 @@ $doc->addStyleSheet($templatePath . '/css/template.css');
         <div class="row">
             <?php
             $multiCol = $this->countModules('right');
-            $mainCol = $multiCol ? '12' :  '8';
+            $mainCol = $multiCol ? '8' :  '12';
             ?>
             <div class="col-sm-<?php echo $mainCol; ?>">
                 <jdoc:include type="message" />
@@ -101,5 +102,9 @@ $doc->addStyleSheet($templatePath . '/css/template.css');
         </div>
 
     </div><!-- /.container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="<?php echo $templatePath; ?>/js/template.js"></script>
 </body>
 </html>
