@@ -10,6 +10,7 @@
 defined('_JEXEC') or die;
 
 require_once('classes/CssRenderer.php');
+require_once('classes/HeadCleaner.php');
 
 $app             = JFactory::getApplication();
 $doc             = JFactory::getDocument();
@@ -31,12 +32,15 @@ $itemid   = $app->input->getCmd('Itemid', '');
 $sitename = $app->get('sitename');
 
 
-//$doc->addScript($templatePath . '/js/template.js');
-//$doc->addScript($templatePath . '/js/bootstrap.js');
+
+// Add Scripts
+JHtml::_('jquery.framework', false); // Here we load jQuery - NOT in no-conflict mode, cause no-conflict mode sucks
+JHtml::_('bootstrap.framework'); // Here we enable the integration of Bootstrap - but we override the assets! Ha!
+$doc->addScript($templatePath . '/js/template.js');
 
 // Add Stylesheets
-CssRenderer::render($this->template);
-$doc->addStyleSheet($templatePath . '/css/template.css');
+CssRenderer::render($this->template); // We re-render our SASS first if necessary
+$doc->addStyleSheet($templatePath . '/css/template.css'); // We add the compiled CSS
 
 
 ?>
@@ -48,8 +52,16 @@ $doc->addStyleSheet($templatePath . '/css/template.css');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!-- Joomla head data -->
+    <!-- Joomla head data - we clean it up first! -->
+    <?php ob_start() ?>
     <jdoc:include type="head" />
+    <?php HeadCleaner::render(ob_get_clean(), $this->template) ?>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
     <!-- Metadata -->
     <?php
@@ -57,11 +69,7 @@ $doc->addStyleSheet($templatePath . '/css/template.css');
     // echo $metadata ?>
 
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 
 </head>
 <body>
@@ -103,8 +111,6 @@ $doc->addStyleSheet($templatePath . '/css/template.css');
 
     </div><!-- /.container -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="<?php echo $templatePath; ?>/js/template.js"></script>
+
 </body>
 </html>
