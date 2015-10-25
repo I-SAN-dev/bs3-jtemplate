@@ -12,7 +12,7 @@
 //no direct accees
 defined ('_JEXEC') or die ('resticted aceess');
 
-jimport( 'joomla.filesystem.file' );
+jimport('joomla.filesystem.file');
 jimport('joomla.filesystem.folder');
 
 class AddonParser
@@ -382,7 +382,7 @@ class AddonParser
                     }
                 }
 
-                $output .= '</section>';
+                $output .= "</section>\n";
 
             }
 
