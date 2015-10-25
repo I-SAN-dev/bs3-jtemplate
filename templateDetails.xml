@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.1" type="template" client="site">
-    <name>scheller-tpl</name>
+    <name>ISAN-BS3DEV</name>
     <version>1.0</version>
     <creationDate>10/2/2015</creationDate>
     <author>Christian Baur</author>
@@ -14,12 +14,15 @@
         <filename>error.php</filename>
         <filename>favicon.ico</filename>-->
         <filename>index.php</filename>
+        <filename>template.php</filename>
         <filename>templateDetails.xml</filename>
         <!--<filename>template_preview.png</filename>
         <filename>template_thumbnail.png</filename>-->
         <folder>css</folder>
         <folder>html</folder>
         <folder>images</folder>
+        <folder>icons</folder>
+        <folder>fonts</folder>
         <folder>js</folder>
         <folder>classes</folder>
         <folder>sppagebuilder</folder>
@@ -32,7 +35,64 @@
     <config>
         <fields name="params">
             <fieldset name="advanced">
-               <!-- TODO: We might want to add some template params here -->
+
+                <field name="googleFont"
+                       type="radio"
+                       class="btn-group btn-group-yesno"
+                       default="0"
+                       label="Include GoogleFont"
+                        >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+
+                <field name="googleFontLink" class="" type="text"
+                       label="Link to GoogleFont Stylesheet"
+                        />
+
+                <field type="spacer" hr="true"/>
+
+                <field type="media" name="socialmediabanner" label="Social Media Banner (1500*786px)" preview="tooltip"/>
+
+                <field type="text" name="gplusauthor" label="Google+ Author Link" />
+
+                <field type="text" name="gpluspublisher" label="Google+ Publisher Link" />
+
+                <field type="text" name="fbadmins" label="Facebook Admin IDs" />
+
+                <field type="list" name="ogpagetype" label="Open Graph Page Type" default="website">
+                    <option value="website">Website</option>
+                    <option value="article">Article</option>
+                    <option value="profile">Profile</option>
+                    <option value="book">Book</option>
+                </field>
+
+
+                <field type="spacer" hr="true"/>
+
+                <field type="note" class="alert alert-info" label="Headdata" description="Go to http://realfavicongenerator.net and generate your files, then put everything generated into the icons folder of this template" />
+
+                <field name="color" label="MS-Tile &amp; Android Status Bar Color" type="color" default="#333333"/>
+
+                <field name="appleStatusBarStyle" type="list" default="default" label="Apple Status Bar Style">
+                    <option value="default">default</option>
+                    <option value="black">black</option>
+                    <option claue="black-translucent">black-translucent</option>
+                </field>
+
+                <field type="spacer" hr="true"/>
+
+                <field type="note" class="alert alert-info" label="Additional Code" description="Here you can add additional code that shall be added on every page, like for e.g. Google analytics" />
+
+                <field type="editor" name="codeHead" editor="codemirror" label="Inside head tag" filter="raw" rows="10" cols="15" default="&lt;!-- Proudly presented by I-SAN.de --&gt;"/>
+
+                <field type="editor" name="codeFirst" editor="codemirror" label="After opening body tag" filter="raw" rows="10" cols="15"/>
+
+                <field type="editor" name="codeLast" editor="codemirror" label="Before closing body tag" filter="raw" rows="10" cols="15"/>
+
+
+
             </fieldset>
         </fields>
     </config>
