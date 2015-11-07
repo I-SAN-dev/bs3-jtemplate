@@ -55,6 +55,7 @@ function sp_carousel_addon($atts, $content){
 
 }
 
+
 function sp_carousel_item_addon( $atts ){
 
 	extract(spAddonAtts(array(
@@ -77,8 +78,9 @@ function sp_carousel_item_addon( $atts ){
 	if($bg) {
 		$has_bg = ' sppb-item-has-bg';
 	}
+
 	
-	$output   = '<div class="sppb-item'. $has_bg .'">';
+	$output   = '<div class="item'. $has_bg .'">';
 
 	if($bg) {
 		$output  .= '<img src="' . $bg . '" alt="' . $title . '">';
