@@ -19,6 +19,7 @@ class AddonParser
 {
     private static $sppagebuilderAddonTags = array();
 
+
     public static function addAddon($tag, $func)
     {
         if ( is_callable($func) )
@@ -78,6 +79,7 @@ class AddonParser
 
     private static function doAddonTag ( $m )
     {
+
         // allow [[foo]] syntax for escaping a tag
         if ( $m[1] == '[' && $m[6] == ']' ) {
             return substr($m[0], 1, -1);
@@ -394,18 +396,25 @@ class AddonParser
 
 }
 
+// Count the addon tags to create unique IDs!
+
+$spAddonTagNumber = 0;
 
 
 function spAddonAtts( $pairs, $atts, $shortcode = '' ) {
     $atts = (array)$atts;
-    $atts = (array)$atts;
     $out = array();
+
     foreach($pairs as $name => $default) {
         if ( array_key_exists($name, $atts) )
             $out[$name] = $atts[$name];
         else
             $out[$name] = $default;
     }
+
+    global $spAddonTagNumber;
+    $out['tagNumber'] = $spAddonTagNumber;
+    $spAddonTagNumber++;
 
     return $out;
 }

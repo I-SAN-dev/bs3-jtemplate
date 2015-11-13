@@ -18,10 +18,9 @@ function sp_carousel_addon($atts, $content){
 		'controllers'=>'',
 		'arrows'=>'',
 		'alignment'=>'',
-		"class"=>'',
+		'class'=>'',
+		'tagNumber'=>''
 		), $atts));
-
-
 
 	$carousel_autoplay = ($autoplay)?'data-ride="carousel"':'';
 
