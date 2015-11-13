@@ -16,6 +16,7 @@ $sppbAccordionStyle = '';
 function sp_accordion_addon($atts, $content){
 
 	global $sppbAccordionStyle;
+	global $sppbAccordionId;
 
 	extract(spAddonAtts(array(
 		"title"					=>'',
@@ -26,34 +27,21 @@ function sp_accordion_addon($atts, $content){
 		"title_margin_top" 		=> '',
 		"title_margin_bottom" 	=> '',		
 		"style"					=> 'panel-default',
-		"class"					=> ''
+		"class"					=> '',
+		"tagNumber"				=> ''
 		), $atts));
 
 	$sppbAccordionStyle = $style;
+	$sppbAccordionId = 'accordion-'.$tagNumber;
 
-	$output  = '<div class="sppb-addon sppb-addon-accordion ' . $class . '">';
+	$content = AddonParser::spDoAddon($content);
 
-	if($title) {
-
-		$title_style = '';
-		if($title_margin_top !='') $title_style .= 'margin-top:' . (int) $title_margin_top . 'px;';
-		if($title_margin_bottom !='') $title_style .= 'margin-bottom:' . (int) $title_margin_bottom . 'px;';
-		if($title_text_color) $title_style .= 'color:' . $title_text_color  . ';';
-		if($title_fontsize) $title_style .= 'font-size:'.$title_fontsize.'px;line-height:'.$title_fontsize.'px;';
-		if($title_fontweight) $title_style .= 'font-weight:'.$title_fontweight.';';
-
-		$output .= '<'.$heading_selector.' class="sppb-addon-title" style="' . $title_style . '">' . $title . '</'.$heading_selector.'>';
-	}
-	
-	$output .= '<div class="sppb-addon-content">';
-	$output	.= '<div class="panel-group ' . $class . '">';
-	$output .= AddonParser::spDoAddon($content);
-	$output .= '</div>';
-	$output .= '</div>';
-
-	$output .= '</div>';
+	ob_start();
+	include('partials/accordion.php');
+	$output = ob_get_clean();
 
 	$sppbAccordionStyle = '';
+	$sppbAccordionId = '';
 
 	return $output;
 
@@ -62,33 +50,20 @@ function sp_accordion_addon($atts, $content){
 function sp_accordion_item_addon( $atts ){
 
 	global $sppbAccordionStyle;
+	global $sppbAccordionId;
 
 	extract(spAddonAtts(array(
 		"title"=>'',
 		"icon"=>'',
-		'content'=>''
+		'content'=>'',
+		'tagNumber' => ''
 		), $atts));
 
 	if($icon!='') {
 		$title = '<i class="fa ' . $icon . '"></i> ' . $title;
 	}
 	
-	$output   = '<div class="panel '. $sppbAccordionStyle .'">';
-
-	$output  .= '<div class="panel-heading">';
-	$output  .= '<span class="panel-title">';
-	$output  .= $title;
-	$output  .= '</span>';
-	$output  .= '</div>';
-
-	$output  .= '<div class="panel-collapse">';
-	$output  .= '<div class="panel-body">';
-	$output  .= $content;
-	$output  .= '</div>';
-	$output  .= '</div>';
-
-	$output  .= '</div>';
-
-	return $output;
-
+	ob_start();
+	include('partials/accordion-item.php');
+	return ob_get_clean();
 }

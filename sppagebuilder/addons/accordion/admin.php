@@ -36,41 +36,6 @@ SpAddonsConfig::addonConfig(
 					),
 				'std'=>'h3',
 			),
-
-			'title_fontsize'=>array(
-				'type'=>'number', 
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE_DESC'),
-				'std'=>''
-				),
-
-			'title_fontweight'=>array(
-				'type'=>'text', 
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT_DESC'),
-				'std'=>''
-				),
-
-			'title_text_color'=>array(
-				'type'=>'color',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR_DESC'),
-				),	
-
-			'title_margin_top'=>array(
-				'type'=>'number',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_TOP'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_TOP_DESC'),
-				'placeholder'=>'10',
-				),
-
-			'title_margin_bottom'=>array(
-				'type'=>'number',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_BOTTOM'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_BOTTOM_DESC'),
-				'placeholder'=>'10',
-				),	
-
 			'style'=>array(
 				'type'=>'select', 
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_ACCORDION_STYLE'),

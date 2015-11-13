@@ -1,0 +1,16 @@
+// Fix Accordion Linked heading
+a.panel-heading
+{
+  display: block;
+}
+
+// Fix Carousel control arrows
+.carousel-control>span
+{
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  font-size: 30px;
+}
