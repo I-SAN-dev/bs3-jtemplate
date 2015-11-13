@@ -63,33 +63,8 @@ function sp_carousel_item_addon( $atts ){
 	$has_bg = ($bg ? ' sppb-item-has-bg' : '');
 	$is_active = ($active=='1' ? ' active' : '');
 
-	
-	$output   = '<div class="item'. $is_active . $has_bg .'">';
-
-	if($bg) {
-		$output  .= '<img src="' . $bg . '" alt="' . $title . '">';
-	}
-
-	$output  .= '<div class="sppb-carousel-item-inner">';
-	$output  .= '<div class="carousel-caption">';
-	$output  .= '<div class="sppb-carousel-pro-text">';
-
-	if(($title) || ($content) ) {
-		
-		if($title!='') $output  .= '<h2>' . $title . '</h2>';
-        $output  .= '<p>' . $content . '</p>';
-
-        if($button_text && $button_url) {
-        	$output  .= '<a href="' . $button_url . '" class="btn btn-' . $button_type . ' btn-' . $button_size . '" role="button">' . $button_text . '</a>';
-        }
-	}
-
-	$output  .= '</div>';
-	$output  .= '</div>';
-
-	$output  .= '</div>';
-	$output  .= '</div>';
-
-	return $output;
+	ob_start();
+	include('partials/carousel-item.php');
+	return ob_get_clean();
 
 }
