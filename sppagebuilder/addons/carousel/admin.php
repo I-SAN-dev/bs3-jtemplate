@@ -46,16 +46,7 @@ SpAddonsConfig::addonConfig(
 					),
 				'std'=>1,
 				),
-			'background'=>array(
-				'type'=>'color', 
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_CAROUSEL_BACKGROUND_COLOR'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_CAROUSEL_BACKGROUND_COLOR_DESC'),
-				),
-			'color'=>array(
-				'type'=>'color', 
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_CAROUSEL_FONT_COLOR'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_CAROUSEL_FONT_COLOR_DESC'),
-				),
+
 			'alignment'=>array(
 				'type'=>'select',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_CAROUSEL_CONTENT_ALIGNMENT'),

@@ -398,6 +398,7 @@ class AddonParser
 
 function spAddonAtts( $pairs, $atts, $shortcode = '' ) {
     $atts = (array)$atts;
+    $atts = (array)$atts;
     $out = array();
     foreach($pairs as $name => $default) {
         if ( array_key_exists($name, $atts) )

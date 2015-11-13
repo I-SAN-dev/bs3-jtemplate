@@ -17,41 +17,27 @@ function sp_carousel_addon($atts, $content){
 		'autoplay'=>'',
 		'controllers'=>'',
 		'arrows'=>'',
-		'background'=>'',
-		'color'=>'',
 		'alignment'=>'',
 		"class"=>'',
 		), $atts));
 
-	if($background) {
-		$background = 'background-color:' . $background . ';';
-	}
 
-	if($color) {
-		$color = 'color:' . $color . ';';
-	}
 
 	$carousel_autoplay = ($autoplay)?'data-ride="carousel"':'';
 
-	$output  = '<div style="' . $background . $color . '" class="carousel slide ' . $class . '" ' . $carousel_autoplay . '>';
+	// Get number of slides
+	$numberOfSlides = substr_count($content, '[sp_carousel_item');
 
-	if($controllers) {
-	$output .= '<ol class="carousel-indicators">';
-    $output .= '</ol>';
-	}
+	// Make all slides inactive
+	$content = str_replace('[sp_carousel_item', '[sp_carousel_item active="0"', $content);
+	// Make the first slide active
+	$content = preg_replace('/active="0"/','active="1"', $content, 1);
 
-	$output .= '<div class="carousel-inner ' . $alignment . '">';
-	$output .= AddonParser::spDoAddon($content);
-	$output	.= '</div>';
+	$slides = AddonParser::spDoAddon($content);
 
-	if($arrows) {
-		$output	.= '<a style="' . $color . '" class="carousel-arrow left carousel-control" role="button" data-slide="prev"><i class="fa fa-chevron-left"></i></a>';
-		$output	.= '<a style="' . $color . '" class="carousel-arrow right carousel-control" role="button" data-slide="next"><i class="fa fa-chevron-right"></i></a>';
-	}
-	
-	$output .= '</div>';
-
-	return $output;
+	ob_start();
+	include('partials/carousel.php');
+	return ob_get_clean();
 
 }
 
@@ -60,6 +46,7 @@ function sp_carousel_item_addon( $atts ){
 
 	extract(spAddonAtts(array(
 		"title"=>'',
+		"active"=>'',
 		"bg"=>'',
 		'content'=>'',
 		"button_text"=>'',
@@ -69,18 +56,16 @@ function sp_carousel_item_addon( $atts ){
 		"button_icon"=>'',
 		), $atts));
 
+
 	if($button_icon) {
 		$button_text = '<i class="fa ' . $button_icon . '"></i> ' . $button_text;
 	}
 
-	$has_bg = '';
-
-	if($bg) {
-		$has_bg = ' sppb-item-has-bg';
-	}
+	$has_bg = ($bg ? ' sppb-item-has-bg' : '');
+	$is_active = ($active=='1' ? ' active' : '');
 
 	
-	$output   = '<div class="item'. $has_bg .'">';
+	$output   = '<div class="item'. $is_active . $has_bg .'">';
 
 	if($bg) {
 		$output  .= '<img src="' . $bg . '" alt="' . $title . '">';
