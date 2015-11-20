@@ -25,5 +25,7 @@ function sp_empty_space_addon($atts){
 	if($hidden_sm) $class .= $class . ' hidden-sm';
 	if($hidden_xs) $class .= $class . ' hidden-xs';
 
-	return '<div class="sppb-empty-space ' . $class . ' clearfix" style="margin-bottom:' . (int)$gap . 'px;"></div>';
+	ob_start();
+	include('partials/empty_space.php');
+	return ob_get_clean();
 }
