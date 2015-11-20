@@ -35,9 +35,9 @@ SpAddonsConfig::addonConfig(
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_BUTTON_SIZE_DESC'),
 				'values'=>array(
 					''=>JText::_('COM_SPPAGEBUILDER_ADDON_BUTTON_SIZE_DEFAULT'),
-					'lg'=>JText::_('COM_SPPAGEBUILDER_ADDON_BUTTON_SIZE_LARGE'),
-					'sm'=>JText::_('COM_SPPAGEBUILDER_ADDON_BUTTON_SIZE_SMALL'),
-					'xs'=>JText::_('COM_SPPAGEBUILDER_ADDON_BUTTON_SIZE_EXTRA_SAMLL'),
+					'btn-lg'=>JText::_('COM_SPPAGEBUILDER_ADDON_BUTTON_SIZE_LARGE'),
+					'btn-sm'=>JText::_('COM_SPPAGEBUILDER_ADDON_BUTTON_SIZE_SMALL'),
+					'btn-xs'=>JText::_('COM_SPPAGEBUILDER_ADDON_BUTTON_SIZE_EXTRA_SAMLL'),
 					),
 			),
 
@@ -79,15 +79,19 @@ SpAddonsConfig::addonConfig(
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_BUTTON_BLOCK_DESC'),
 				'values'=>array(
 					''=>JText::_('JNO'),
-					'sppb-btn-block'=>JText::_('JYES'),
+					'btn-block'=>JText::_('JYES'),
 				)
 			),
 
-			'margin'=>array(
-				'type'=>'text', 
-				'title'=>JText::_('COM_SPPAGEBUILDER_MARGIN'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_MARGIN_DESC'),
-				'placeholder'=>'5px 5px 5px 5px',
+			'align'=>array(
+					'type'=>'select',
+					'title'=>'Align',
+					'desc'=>'The Button alignment',
+					'values'=>array(
+							'text-left'=>'Left',
+							'text-center'=>'Center',
+							'text-right'=>'Right'
+					)
 			),
 
 			'class'=>array(

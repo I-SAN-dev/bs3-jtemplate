@@ -19,7 +19,7 @@ function sp_button_addon($atts, $content){
 		"type"=>'',
 		"icon"=>'',
 		"target"=>'',
-		"margin"=>'',
+		"align"=>'',
 		"block"=>'',
 		"class"=>''
 		), $atts));
@@ -28,12 +28,8 @@ function sp_button_addon($atts, $content){
 		$text = '<i class="fa ' . $icon . '"></i> ' . $text;
 	}
 
-	$style = '';
-
-	if($margin) $style = ' style="margin:'.$margin.';"';
-
-	$output  = '<a target="' . $target . '" href="' . $url . '" class="btn btn-' . $type . ' btn-' . $size . ' ' . $block . ' ' . $class . '" ' . $style . ' role="button">' . $text . '</a>';
-
-	return $output;
+	ob_start();
+	require('partials/button.php');
+	return ob_get_clean();
 	
 }
