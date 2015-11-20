@@ -1,3 +1,4 @@
+
 <div class="item  <?= $is_active ?> <?= $has_bg ?>">
     <?php if($bg): ?>
         <img src="<?= $bg ?>" alt="<?= $title ?>">
@@ -19,5 +20,5 @@
             </div>
         </div>
     </div>
-
 </div>
+

@@ -1,3 +1,4 @@
+
 <div class="panel <?= $sppbAccordionStyle ?>">
     <a class="panel-heading" role="button" data-toggle="collapse" data-parent="#<?= $sppbAccordionId ?>" href="#collapse-<?= $tagNumber ?>">
         <span class="panel-title"><?= $title ?></span>
@@ -8,3 +9,4 @@
         </div>
     </div>
 </div>
+

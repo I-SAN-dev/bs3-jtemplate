@@ -1,3 +1,4 @@
+
 <div class="sppb-addon sppb-addon-accordion <?= $class ?>">
     <?php if($title): ?>
      <<?= $heading_selector ?> class="sppb-addon-title"><?= $title ?></<?= $heading_selector ?>>
@@ -9,3 +10,4 @@
         </div>
     </div>
 </div>
+

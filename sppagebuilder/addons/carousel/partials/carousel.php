@@ -1,3 +1,4 @@
+
 <div id="carousel-<?= $tagNumber ?>" class="carousel slide <?= $class ?> " <?= $carousel_autoplay ?> >
     <?php if($controllers): ?>
         <ol class="carousel-indicators">
@@ -22,3 +23,4 @@
         </a>
     <?php endif; ?>
 </div>
+
