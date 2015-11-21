@@ -11,19 +11,14 @@ defined ('_JEXEC') or die ('restricted aceess');
 // jQuery will be added by the template
 //JHtml::_('jquery.framework');
 
-
-
 $doc = JFactory::getDocument();
-
-
 $app = JFactory::getApplication();
+
 // The problem here is that the default addon parser returns html containing prefixed classes like 'sppb-row', so we include our own parser here.
 //require_once ( JPATH_COMPONENT . '/parser/addon-parser.php' );
 require_once('templates/'.$app->getTemplate().'/classes/addon-parser.php');
-$menus		= $app->getMenu();
-$menu = $menus->getActive();
-
-
+$menus = $app->getMenu();
+$menu  = $menus->getActive();
 
 $menuClassPrefix = '';
 $showPageHeading = 0;
@@ -40,26 +35,20 @@ $content = json_decode($page->text);
 $fullwidth = $page->page_layout;
 ?>
 
-    <div id="sp-page-builder" class="sp-page-builder <?php echo $menuClassPrefix; ?> page-<?php echo $page->id; ?>">
-        <?php if($showPageHeading){ ?>
+    <div id="sp-page-builder" class="sp-page-builder <?= $menuClassPrefix ?> page-<?= $page->id; ?>">
+        <?php if($showPageHeading): ?>
             <div class="page-header">
                 <h1 itemprop="name">
-                    <?php
-                    if($menuheading)
-                    {
-                        echo $menuheading;
-                    } else {
-                        echo $page->title;
-                    }
-                    ?>
+                    <?php if($menuheading): ?>
+                        <?= $menuheading ?>
+                    <?php else: ?>
+                        <?= $page->title ?>
+                    <?php endif; ?>
                 </h1>
             </div>
-        <?php } ?>
-
+        <?php endif; ?>
         <div class="page-content">
-            <?php
-            echo AddonParser::viewAddons($content,$fullwidth);
-            ?>
+            <?= AddonParser::viewAddons($content,$fullwidth) ?>
         </div>
     </div>
 
