@@ -28,6 +28,8 @@ $view     = $app->input->getCmd('view', '');
 $layout   = $app->input->getCmd('layout', '');
 $task     = $app->input->getCmd('task', '');
 $itemid   = $app->input->getCmd('Itemid', '');
+$menu     = $app->getMenu();
+$pageid = $menu->getActive()->id;
 $sitename = $app->get('sitename');
 
 
@@ -80,6 +82,10 @@ if(file_exists($banner['src']))
     $banner['height'] = $bannerinfo[1];
 }
 
+
+// Check layout selection
+$layout = 'layouts/default.php';
+/* TODO */
 
 
 
@@ -190,7 +196,7 @@ if(file_exists($banner['src']))
 
     <?php
         // we have another file for the html-template, because here, we just collect data
-        include('template.php');
+        include($layout);
     ?>
 
     <?php

@@ -14,7 +14,6 @@
         <filename>error.php</filename>
         <filename>favicon.ico</filename>-->
         <filename>index.php</filename>
-        <filename>template.php</filename>
         <filename>templateDetails.xml</filename>
         <!--<filename>template_preview.png</filename>
         <filename>template_thumbnail.png</filename>-->
@@ -23,6 +22,9 @@
         <folder>images</folder>
         <folder>icons</folder>
         <folder>fonts</folder>
+        <folder>images</folder>
+        <folder>patch</folder>
+        <folder>layouts</folder>
         <folder>js</folder>
         <folder>classes</folder>
         <folder>sppagebuilder</folder>
@@ -34,7 +36,35 @@
     </positions>
     <config>
         <fields name="params">
-            <fieldset name="advanced">
+
+            <fieldset name="options">
+
+                <field type="note" class="alert alert-info" label="Page Layouts" description="Page layouts are stored inside /layouts in this template. Per default the layout default.php is used. You can select non-default layouts for single pages here." />
+
+                <field name="list_layouts"
+                       type="Repeatable"
+                       icon="list"
+                       label="Non-default Page Layouts"
+                >
+                    <fieldset hidden="true" name="list_layouts_modal" repeat="true">
+
+                        <field name="menuitem" type="menuitem" label="Select a menu item" />
+
+                        <field name="layoutfile"
+                               type="filelist"
+                               default="default"
+                               label="Select a Layout"
+                               directory="templates/isan-bs3dev/layouts"
+                               stripext="true"
+                               hide_none="true"
+                               hide_default="true" />
+
+                    </fieldset>
+                </field>
+
+                <field type="spacer" hr="true"/>
+
+                <field type="note" class="alert alert-info" label="Headdata" description="Go to http://realfavicongenerator.net and generate your files, then put everything generated into the icons folder of this template" />
 
                 <field name="googleFont"
                        type="radio"
@@ -71,8 +101,6 @@
 
                 <field type="spacer" hr="true"/>
 
-                <field type="note" class="alert alert-info" label="Headdata" description="Go to http://realfavicongenerator.net and generate your files, then put everything generated into the icons folder of this template" />
-
                 <field name="color" label="MS-Tile &amp; Android Status Bar Color" type="color" default="#333333"/>
 
                 <field name="appleStatusBarStyle" type="list" default="default" label="Apple Status Bar Style">
@@ -81,7 +109,9 @@
                     <option claue="black-translucent">black-translucent</option>
                 </field>
 
-                <field type="spacer" hr="true"/>
+            </fieldset>
+
+            <fieldset name="advanced">
 
                 <field type="note" class="alert alert-info" label="Additional Code" description="Here you can add additional code that shall be added on every page, like for e.g. Google analytics" />
 
@@ -91,9 +121,9 @@
 
                 <field type="editor" name="codeLast" editor="codemirror" label="Before closing body tag" filter="raw" rows="10" cols="15"/>
 
-
-
             </fieldset>
+
+
         </fields>
     </config>
 </extension>

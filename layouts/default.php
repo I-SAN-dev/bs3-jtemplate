@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die; ?>
 
 <?php if($this->countModules('navbar')): ?>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <a class="navbar-brand" href="/"><?= $sitename ?></a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <jdoc:include type="modules" name="navbar" style="none" />
