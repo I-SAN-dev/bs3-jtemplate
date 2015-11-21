@@ -126,8 +126,6 @@ class AddonParser
         $app = JFactory::getApplication();
         $template = $app->getTemplate();
 
-        require_once JPATH_COMPONENT_SITE . '/addons/module/site.php';//include module manually
-
         $template_path = JPATH_ROOT . '/templates/' . $template;
 
         $tmpl_folders = array();
@@ -150,16 +148,16 @@ class AddonParser
             {
                 $tmpl_file_path = $template_path . '/sppagebuilder/addons/'.$folder.'/site.php';
                 $com_file_path = JPATH_COMPONENT_SITE . '/addons/'.$folder.'/site.php';
-                if($folder!='module') {
-                    if(file_exists( $tmpl_file_path ))
-                    {
-                        require_once $tmpl_file_path;
-                    }
-                    else if(file_exists( $com_file_path ))
-                    {
-                        require_once $com_file_path;
-                    }
+
+                if(file_exists( $tmpl_file_path ))
+                {
+                    require_once $tmpl_file_path;
                 }
+                else if(file_exists( $com_file_path ))
+                {
+                    require_once $com_file_path;
+                }
+
             }
         }
     }
