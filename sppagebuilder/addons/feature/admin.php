@@ -17,7 +17,7 @@ SpAddonsConfig::addonConfig(
 		'attr'=>array(
 			'title'=>array(
 				'type'=>'text', 
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE'),
+				'title'=>'Title',
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_DESC'),
 				'std'=>  'Feature Box'
 				),
@@ -37,30 +37,11 @@ SpAddonsConfig::addonConfig(
 				'std'=>'h3',
 			),
 
-			'title_fontsize'=>array(
-				'type'=>'number', 
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE_DESC'),
-				'std'=>''
-				),
 
-			'title_fontweight'=>array(
-				'type'=>'text', 
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT_DESC'),
-				'std'=>''
-				),
-
-			'title_text_color'=>array(
-				'type'=>'color',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR_DESC'),
-				),
-
-			'title_url'=>array(
+			'url'=>array(
 				'type'=>'text',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_TITLE_URL'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_TITLE_URL_DESC'),
+				'title'=>'Link',
+				'desc'=>'Enter the URL the Feature Box should link to. Leave blank if not required.',
 				'placeholder'=>'http://',
 				'std'=>''
 				),
@@ -70,12 +51,11 @@ SpAddonsConfig::addonConfig(
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_ICON_IMAGE_POSITION'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_ICON_IMAGE_POSITION_DESC'),
 				'values'=>array(
-					'after'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_TITLE_POSITION_BEFORE_TITLE'),
-					'before'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_TITLE_POSITION_AFTER_TITLE'),
-					'left'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_TITLE_POSITION_LEFT'),
-					'right'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_TITLE_POSITION_RIGHT'),
+					'iht'=>'Image-Heading-Text',
+					'hit'=>'Heading-Image-Text',
+					'hti'=>'Heading-Text-Image'
 					),
-				'std'=>'before'
+				'std'=>'iht'
 				),
 
 			'feature_type'=>array(
@@ -103,69 +83,8 @@ SpAddonsConfig::addonConfig(
 				'std'=> ''
 				),
 
-			'icon_size'=>array(
-				'type'=>'number',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_ICON_SIZE'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_ICON_SIZE_DESC'),
-				'placeholder'=>36,
-				'std'=>36,
-				),
-
-			'icon_color'=>array(
-				'type'=>'color',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_COLOR'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_COLOR_DESC'),
-				),
-
-			'icon_background'=>array(
-				'type'=>'color',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BACKGROUND'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BACKGROUND_DESC'),
-				),
-
-			'icon_border_color'=>array(
-				'type'=>'color',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_COLOR'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_COLOR_DESC'),
-				),
-
-			'icon_border_width'=>array(
-				'type'=>'number',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_WIDTH_SIZE'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_WIDTH_SIZE_DESC'),
-				'placeholder'=>'3',
-				),
-
-			'icon_border_radius'=>array(
-				'type'=>'number',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_RADIUS'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_RADIUS_DESC'),
-				'placeholder'=>'5',
-				),
-
-			'icon_margin_top'=>array(
-				'type'=>'number',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_MARGIN_TOP'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_MARGIN_TOP_DESC'),
-				'placeholder'=>'10',
-				),
-
-			'icon_margin_bottom'=>array(
-				'type'=>'number',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_MARGIN_BOTTOM'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_MARGIN_BOTTOM_DESC'),
-				'placeholder'=>'10',
-				),				
-
-			'icon_padding'=>array(
-				'type'=>'number',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_PADDING'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_PADDING_DESC'),
-				'placeholder'=>'20',
-				),
-
 			'text'=>array(
-				'type'=>'editor', 
+				'type'=>'textarea',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_TEXT'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_TEXT_DESC'),
 				'std'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer adipiscing erat eget risus sollicitudin pellentesque et non erat. Maecenas nibh dolor, malesuada et bibendum a, sagittis accumsan ipsum.'
@@ -176,11 +95,11 @@ SpAddonsConfig::addonConfig(
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_CONTENT_ALIGNMENT'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_CONTENT_ALIGNMENT_DESC'),
 				'values'=>array(
-					'sppb-text-left'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_LEFT'),
-					'sppb-text-center'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_CENTER'),
-					'sppb-text-right'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_RIGHT'),
+					'text-left'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_LEFT'),
+					'text-center'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_CENTER'),
+					'text-right'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_RIGHT'),
 					),
-				'std'=>'sppb-text-center',
+				'std'=>'text-center',
 				),
 
 			'class'=>array(

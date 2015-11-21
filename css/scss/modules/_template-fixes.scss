@@ -14,3 +14,9 @@ a.panel-heading
   margin-top: -15px;
   font-size: 30px;
 }
+
+// Feature box images respect align
+.feature-image>img.img-responsive
+{
+  display: inline-block;
+}
