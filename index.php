@@ -29,7 +29,7 @@ $layout   = $app->input->getCmd('layout', '');
 $task     = $app->input->getCmd('task', '');
 $itemid   = $app->input->getCmd('Itemid', '');
 $menu     = $app->getMenu();
-$pageid = $menu->getActive()->id;
+$pageid   = $menu->getActive()->id;
 $sitename = $app->get('sitename');
 
 
@@ -86,6 +86,23 @@ if(file_exists($banner['src']))
 // Check layout selection
 $layout = 'layouts/default.php';
 /* TODO */
+try {
+    $layoutdata = json_decode($params->get('list_layouts'));
+    $layoutassignment = array_combine($layoutdata->menuitem, $layoutdata->layoutfile);
+}
+catch(Exception $e)
+{
+    echo $e->getMessage();
+}
+if(isset($layoutassignment[$pageid.'']))
+{
+    $path = 'layouts/'.$layoutassignment[$pageid].'.php';
+    if(file_exists(dirname(__FILE__).'/'.$path))
+    {
+        $layout = $path;
+    }
+}
+
 
 
 
