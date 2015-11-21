@@ -15,8 +15,14 @@ a.panel-heading
   font-size: 30px;
 }
 
-// Feature box images respect align
-.feature-image>img.img-responsive
+// Images respect align
+.feature-image,
+.sppb-addon-single-image
 {
-  display: inline-block;
+  img.img-responsive
+  {
+    display: inline-block;
+  }
 }
+
+
