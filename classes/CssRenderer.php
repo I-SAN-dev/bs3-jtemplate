@@ -1,6 +1,6 @@
 <?php
 /**
- * Description
+ * Renders SCSS
  *
  * This file is part of the Joomla Bootstrap3 Template from I-SAN.de
  *

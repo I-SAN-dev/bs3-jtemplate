@@ -4,16 +4,17 @@
     <name>ISAN-BS3DEV</name>
     <version>1.0</version>
     <creationDate>10/2/2015</creationDate>
-    <author>Christian Baur</author>
+    <author>Sebastian Antosch &amp; Christian Baur</author>
     <authorEmail>kontakt@i-san.de</authorEmail>
     <copyright>Copyright (C) 2015 I-SAN.de Webdesign &amp; Hosting GbR, Sebastian Antosch and Christian Baur. All rights reserved.</copyright>
-    <description></description>
+    <description>This Joomla Template includes a SCSS Compiler, Vanilla Bootstrap3, multi-layout options and several improvements/compatibility changes for com_sppagebuilder.</description>
     <files>
         <!-- TODO: Add component.php and error.php -->
         <!--<filename>component.php</filename>
         <filename>error.php</filename>
         <filename>favicon.ico</filename>-->
         <filename>index.php</filename>
+        <filename>updatePositions.php</filename>
         <filename>templateDetails.xml</filename>
         <!--<filename>template_preview.png</filename>
         <filename>template_thumbnail.png</filename>-->
@@ -62,6 +63,8 @@
                     </fieldset>
                 </field>
 
+                <field type="note" class="" label="Update Module Positions" description="&lt;a href=&quot;/?updatepositions=1&quot; target=&quot;_blank&quot; class=&quot;btn btn-default&quot; &gt;Click here&lt;/a&gt; to update and view available module positions based on your layouts." />
+
                 <field type="spacer" hr="true"/>
 
                 <field type="note" class="alert alert-info" label="Headdata" description="Go to http://realfavicongenerator.net and generate your files, then put everything generated into the icons folder of this template" />
@@ -77,7 +80,7 @@
                 </field>
 
 
-                <field name="googleFontLink" class="" type="text"
+                <field name="googleFontLink" class="" type="text" showon="googleFont:1"
                        label="Link to GoogleFont Stylesheet"
                         />
 

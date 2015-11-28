@@ -10,6 +10,7 @@
 defined('_JEXEC') or die;
 
 require_once('classes/CssRenderer.php');
+require_once('classes/PositionUpdater.php');
 
 $app             = JFactory::getApplication();
 $doc             = JFactory::getDocument();
@@ -85,7 +86,6 @@ if(file_exists($banner['src']))
 
 // Check layout selection
 $layout = 'layouts/default.php';
-/* TODO */
 try {
     $layoutdata = json_decode($params->get('list_layouts'));
     $layoutassignment = array_combine($layoutdata->menuitem, $layoutdata->layoutfile);
@@ -103,6 +103,13 @@ if(isset($layoutassignment[$pageid.'']))
     }
 }
 
+// Check position update request
+$updatePositions = false;
+if(isset($_GET['updatepositions']) && $_GET['updatepositions'] == 1 )
+{
+    $updatePositions = true;
+    $updatePositionsMessage = PositionUpdater::update($this->template);
+}
 
 
 
@@ -212,8 +219,13 @@ if(isset($layoutassignment[$pageid.'']))
     ?>
 
     <?php
-        // we have another file for the html-template, because here, we just collect data
+        // we have another file for the html-template, because here, we just collect data.
+        // If we update the positions, we display other data than component
+        ob_start();
         include($layout);
+        $layouthtml = ob_get_clean();
+        if($updatePositions) $layouthtml = str_replace('<jdoc:include type="component" />', $updatePositionsMessage, $layouthtml);
+        echo $layouthtml;
     ?>
 
     <?php
