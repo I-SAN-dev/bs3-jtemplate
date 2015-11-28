@@ -31,8 +31,6 @@
         <folder>sppagebuilder</folder>
     </files>
     <positions>
-        <position>navbar</position>
-        <position>right</position>
         <position>debug</position>
     </positions>
     <config>

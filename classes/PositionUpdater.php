@@ -30,48 +30,67 @@ class PositionUpdater {
     {
         $layouts_path = 'templates/'.$template.self::$layoutPath;
 
-        /* Get all layout files */
-        $files = array();
-        foreach (glob($layouts_path.'*.php') as $file) {
-            $files[basename($file, '.php')] = $file;
-        }
+        try {
 
-        $allpositions = array();
-        $filepositions = array();
+            /* Get all layout files */
+            $files = array();
+            foreach (glob($layouts_path . '*.php') as $file) {
+                $files[basename($file, '.php')] = $file;
+            }
 
-        /* parse all layout files */
-        foreach($files as $key => $path)
-        {
-            $positions = array();
+            $allpositions = array();
+            $filepositions = array();
 
-            // Get html content, strip php first
-            $html = preg_replace(array('/<(\?|\%)\=?(php)?/', '/(\%|\?)>/'), array('',''), file_get_contents($path));
-            $dom = new DOMDocument();
-            $dom->loadHTML($html);
+            /* parse all layout files */
+            foreach ($files as $key => $path) {
+                $positions = array();
 
-            // Check for positions
-            foreach($dom->getElementsByTagName('include') as $jdoc)
-            {
-                if($jdoc->getAttribute('type') == 'modules')
-                {
-                    $positions[] = $jdoc->getAttribute('name');
+                // Get html content, strip php first
+                $html = preg_replace(array('/<(\?|\%)\=?(php)?/', '/(\%|\?)>/'), array('', ''), file_get_contents($path));
+                $dom = new DOMDocument();
+                $dom->loadHTML($html);
+
+                // Check for positions
+                foreach ($dom->getElementsByTagName('include') as $jdoc) {
+                    if ($jdoc->getAttribute('type') == 'modules') {
+                        $positions[] = $jdoc->getAttribute('name');
+                    }
+                }
+
+                // Save the positions
+                $filepositions[$key] = array();
+                foreach ($positions as $position) {
+                    $filepositions[$key][$position] = true;
+                    $allpositions[$position] = true;
                 }
             }
 
-            // Save the positions
-            $filepositions[$key] = array();
-            foreach($positions as $position)
+            $message = "Successfully checked " . count($files) . " layout files, found " . count($allpositions) . " module positions and added them to the templateDetails.xml";
+
+
+            // get templateDetails file
+            $templateDetailsPath = 'templates/' . $template . '/templateDetails.xml';
+            $xml = new DOMDocument();
+            $xml->load($templateDetailsPath);
+            //Get positions
+            $positionnode = $xml->getElementsByTagName('positions')->item(0);
+            // Remove old positions
+            $positionnode->nodeValue = '';
+            // Add all positions
+            foreach($allpositions as $key=>$exists)
             {
-                $filepositions[$key][$position] = true;
-                $allpositions[$position] = true;
+                $positionnode->appendChild($xml->createElement('position', $key));
             }
+            $positionnode->appendChild($xml->createElement('position', 'debug'));
+
+            // Save the file
+            file_put_contents($templateDetailsPath, $xml->saveXML());
+
         }
-
-        $message="Successfully checked ".count($files)." layout files, found ".count($allpositions). " module positions and added them to the templateDetails.xml";
-
-
-
-
+        catch(Exception $e)
+        {
+            $message = $e->getMessage();
+        }
 
         ob_start();
         include('positionupdater/message.php');
