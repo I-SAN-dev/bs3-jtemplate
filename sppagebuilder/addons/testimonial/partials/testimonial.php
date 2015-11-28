@@ -1,3 +1,4 @@
+
 <div class="sppb-addon sppb-addon-testimonial <?= $class ?>">
     <?php if($title): ?>
         <<?= $heading_selector ?> class="sppb-addon-title"><?= $title ?></<?= $heading_selector ?>>
