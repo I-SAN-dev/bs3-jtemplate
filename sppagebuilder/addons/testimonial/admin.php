@@ -36,40 +36,6 @@ SpAddonsConfig::addonConfig(
 					),
 				'std'=>'h3',
 			),
-
-			'title_fontsize'=>array(
-				'type'=>'number', 
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE_DESC'),
-				'std'=>''
-				),
-
-			'title_fontweight'=>array(
-				'type'=>'text', 
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT_DESC'),
-				'std'=>''
-				),
-
-			'title_text_color'=>array(
-				'type'=>'color',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR_DESC'),
-				),	
-
-			'title_margin_top'=>array(
-				'type'=>'number',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_TOP'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_TOP_DESC'),
-				'placeholder'=>'10',
-				),
-
-			'title_margin_bottom'=>array(
-				'type'=>'number',
-				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_BOTTOM'),
-				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_BOTTOM_DESC'),
-				'placeholder'=>'10',
-				),	
 			
 			'review'=>array(
 				'type'=>'editor',
@@ -87,7 +53,7 @@ SpAddonsConfig::addonConfig(
 				'type'=>'text', 
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_COMPANY'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_COMPANY_DESC'),
-				'std'=>  'CEO, JoomShaper',
+				'std'=>  'CEO, I-SAN.de Webdesign & Hosting GbR',
 				),  
 			'avatar'=>array(
 				'type'=>'media', 
@@ -107,7 +73,7 @@ SpAddonsConfig::addonConfig(
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_AVATAR_POSITION_DESC'),
 				'values' =>array(
 					'left'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_LEFT'),
-					'right'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_LEFT'),
+					'right'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_RIGHT'),
 					),
 				'std' => 'left'
 				),
@@ -115,7 +81,7 @@ SpAddonsConfig::addonConfig(
 				'type'=>'text', 
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_URL'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_URL_DESC'),
-				'std' => 'http://www.joomshaper.com'
+				'std' => 'http://i-san.de'
 				),
 			'link_target'=>array(
 				'type'=>'select', 
