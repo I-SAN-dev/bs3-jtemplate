@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  Templates.scheller-tpl
+ * @subpackage  Templates.
  *
  * @copyright   Copyright (C) 2015 I-SAN.de Webdesign & Hosting GbR, Sebastian Antosch and Christian Baur. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -9,21 +9,30 @@
 
 defined('_JEXEC') or die;
 
+/*
+ * Require additional classes
+ */
 require_once('classes/CssRenderer.php');
 require_once('classes/PositionUpdater.php');
 
+/*
+ * Base variables
+ */
 $app             = JFactory::getApplication();
 $doc             = JFactory::getDocument();
 $user            = JFactory::getUser();
 $this->language  = $doc->language;
 $this->direction = $doc->direction;
-
 $templatePath = $this->baseurl . '/templates/' . $this->template;
 
-// Getting params from template
+/*
+ * Get template params
+ */
 $params = $app->getTemplate(true)->params;
 
-// Detecting Active Variables
+/*
+ * Detecting active variables
+ */
 $option   = $app->input->getCmd('option', '');
 $view     = $app->input->getCmd('view', '');
 $layout   = $app->input->getCmd('layout', '');
@@ -33,17 +42,22 @@ $menu     = $app->getMenu();
 $pageid   = $menu->getActive()->id;
 $sitename = $app->get('sitename');
 
-
-// Add Scripts
+/*
+ * Add Scripts
+ */
 JHtml::_('jquery.framework', false); // Here we load jQuery - NOT in no-conflict mode, cause no-conflict mode sucks
 JHtml::_('bootstrap.framework'); // Here we enable the integration of Bootstrap - but we override the assets! Ha!
 $doc->addScript($templatePath . '/js/template.js');
 
-// Add Stylesheets
+/*
+ * Add Stylesheets
+ */
 CssRenderer::render($this->template); // We re-render our SASS first if necessary
 $doc->addStyleSheet($templatePath . '/css/template.css'); // We add the compiled CSS
 
-// Remove unnecessary crap
+/*
+ * Remove unnecessary crap
+ */
 unset($doc->_scripts[JURI::root(true) . '/media/system/js/mootools-core.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/system/js/mootools-more.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/system/js/core.js']);
@@ -51,7 +65,9 @@ unset($doc->_scripts[JURI::root(true) . '/media/system/js/caption.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-noconflict.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-migrate.min.js']);
 
-// Remove og:tags in the head set by other extensions - we user our own very complete social media tag set
+/*
+ * Remove og:tags in the head set by other extensions - we user our own very complete social media tag set
+ */
 foreach($doc->_custom as $index=>$custom)
 {
     if(strpos($custom, 'og:') != false)
@@ -60,7 +76,9 @@ foreach($doc->_custom as $index=>$custom)
     }
 }
 
-// Remove inline caption script
+/*
+ * Remove inline caption script
+ */
 if (isset($this->_script['text/javascript']))
 {
     $this->_script['text/javascript'] = preg_replace('%window\.addEvent\(\'load\',\s*function\(\)\s*{\s*new\s*JCaption\(\'img.caption\'\);\s*}\);\s*%', '', $this->_script['text/javascript']);
@@ -68,10 +86,14 @@ if (isset($this->_script['text/javascript']))
         unset($this->_script['text/javascript']);
 }
 
-//Remove generator
+/*
+ * Remove generator
+ */
 $this->setGenerator(NULL);
 
-// Get Meta Values
+/*
+ * Get Meta Values
+ */
 $color = $params->get('color');
 $appleStatusBar = $params->get('appleStatusBarStyle');
 $banner = array();
@@ -83,8 +105,9 @@ if(file_exists($banner['src']))
     $banner['height'] = $bannerinfo[1];
 }
 
-
-// Check layout selection
+/*
+ * Check Layout selection
+ */
 $layout = 'layouts/default.php';
 try {
     $layoutdata = json_decode($params->get('list_layouts'));
@@ -103,16 +126,27 @@ if(isset($layoutassignment[$pageid.'']))
     }
 }
 
-// Check position update request
+/*
+ * Get layout HTML
+ */
+ob_start();
+include($layout);
+$layouthtml = ob_get_clean();
+
+/*
+ * Check position update request
+ */
 $updatePositions = false;
 if(isset($_GET['updatepositions']) && $_GET['updatepositions'] == 1 )
 {
     $updatePositions = true;
     $updatePositionsMessage = PositionUpdater::update($this->template);
+    $layouthtml = str_replace('<jdoc:include type="component" />', $updatePositionsMessage, $layouthtml);
 }
 
-
-
+/*
+ * Start head template
+ */
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>">
@@ -207,9 +241,6 @@ if(isset($_GET['updatepositions']) && $_GET['updatepositions'] == 1 )
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="<?php echo $appleStatusBar ?>" />
 
-
-
-
 </head>
 <body>
 
@@ -220,11 +251,6 @@ if(isset($_GET['updatepositions']) && $_GET['updatepositions'] == 1 )
 
     <?php
         // we have another file for the html-template, because here, we just collect data.
-        // If we update the positions, we display other data than component
-        ob_start();
-        include($layout);
-        $layouthtml = ob_get_clean();
-        if($updatePositions) $layouthtml = str_replace('<jdoc:include type="component" />', $updatePositionsMessage, $layouthtml);
         echo $layouthtml;
     ?>
 
