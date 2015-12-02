@@ -108,30 +108,50 @@ if(file_exists($banner['src']))
 /*
  * Check Layout selection
  */
-$layout = 'layouts/default.php';
 try {
+
     $layoutdata = json_decode($params->get('list_layouts'));
-    $layoutassignment = array_combine($layoutdata->menuitem, $layoutdata->layoutfile);
+
+    /*
+     * Ensure data integrity
+     */
+    $menuitems = (is_array($layoutdata->menuitem)) ? $layoutdata->menuitem : array();
+    $layoutfiles = (is_array( $layoutdata->layoutfile)) ?  $layoutdata->layoutfile : array();
+
+    $layoutassignment = array_combine($menuitems, $layoutfiles);
+
+    /*
+     * Generate path
+     */
+    if(isset($layoutassignment[$pageid.'']))
+    {
+        $path = 'layouts/'.$layoutassignment[$pageid].'.php';
+    }
+    else
+    {
+        $path = 'layouts/default.php';
+    }
+
+    /*
+     * Get layout HTML
+     */
+    if(file_exists(dirname(__FILE__).'/'.$path))
+    {
+
+        ob_start();
+        include($path);
+        $layouthtml = ob_get_clean();
+    }
+    else
+    {
+        $layouthtml = '<div class="alert alert-danger">File '.$path.' does not exist!</div>';
+    }
+
 }
 catch(Exception $e)
 {
-    echo $e->getMessage();
+    $layouthtml = '<div class="alert alert-danger">'.$e->getMessage().'</div>';
 }
-if(isset($layoutassignment[$pageid.'']))
-{
-    $path = 'layouts/'.$layoutassignment[$pageid].'.php';
-    if(file_exists(dirname(__FILE__).'/'.$path))
-    {
-        $layout = $path;
-    }
-}
-
-/*
- * Get layout HTML
- */
-ob_start();
-include($layout);
-$layouthtml = ob_get_clean();
 
 /*
  * Check position update request
