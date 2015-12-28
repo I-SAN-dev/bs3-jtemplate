@@ -27,7 +27,7 @@ if ($item->menu_image)
 }
 
 	elseif ($item->deeper) { 
-		$linktype = $item->title. '<b class="caret"></b>' ;
+		$linktype = $item->title. ' <span class="fa fa-angle-down"></span>' ;
 		if ($item->level < 2) {
 		$class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
 		$item->flink = '#';
