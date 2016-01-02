@@ -29,7 +29,19 @@
         <folder>js</folder>
         <folder>classes</folder>
         <folder>sppagebuilder</folder>
+        <folder>language</folder>
     </files>
+    <languages folder="language/site">
+        <language tag="de-DE">de-DE/de-DE.tpl_bs3-jtemplate.ini</language>
+        <language tag="de-DE">de-DE/de-DE.com_sppagebuilder.ini</language>
+    </languages>
+    <administration>
+        <languages folder="language/admin">
+            <language tag="de-DE">de-DE/de-DE.tpl_bs3-jtemplate.ini</language>
+            <language tag="de-DE">de-DE/de-DE.com_sppagebuilder.ini</language>
+            <language tag="de-DE">de-DE/de-DE.com_sppagebuilder.sys.ini</language>
+        </languages>
+    </administration>
     <positions>
         <position>debug</position>
     </positions>
