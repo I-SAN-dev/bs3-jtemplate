@@ -65,6 +65,10 @@ unset($doc->_scripts[JURI::root(true) . '/media/system/js/caption.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-noconflict.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-migrate.min.js']);
 
+unset($doc->_styleSheets['/media/com_visforms/css/visforms.css']);
+unset($doc->_styleSheets['/media/com_visforms/css/visforms.min.css']);
+
+
 /*
  * Remove og:tags in the head set by other extensions - we user our own very complete social media tag set
  */
