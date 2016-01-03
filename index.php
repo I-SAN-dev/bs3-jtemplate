@@ -62,11 +62,18 @@ unset($doc->_scripts[JURI::root(true) . '/media/system/js/mootools-core.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/system/js/mootools-more.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/system/js/core.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/system/js/caption.js']);
+unset($doc->_scripts[JURI::root(true) . '/media/system/js/modal.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-noconflict.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-migrate.min.js']);
 
+unset($doc->_styleSheets['/media/system/css/modal.css']);
 unset($doc->_styleSheets['/media/com_visforms/css/visforms.css']);
 unset($doc->_styleSheets['/media/com_visforms/css/visforms.min.css']);
+
+/*
+ * Remove inline Javascript - bad practice and mostly throws errors
+ */
+$doc->_script = array();
 
 
 /*
