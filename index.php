@@ -67,6 +67,7 @@ unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-noconflict.js']);
 unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-migrate.min.js']);
 
 unset($doc->_styleSheets['/media/system/css/modal.css']);
+unset($doc->_styleSheets['/media/jui/css/bootstrap.css']);
 unset($doc->_styleSheets['/media/com_visforms/css/visforms.css']);
 unset($doc->_styleSheets['/media/com_visforms/css/visforms.min.css']);
 
