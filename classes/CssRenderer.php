@@ -74,6 +74,7 @@ class CssRenderer {
         {
             $scss = '@import "templates/'.$template.self::$scssPath.'";';
             $scssc = new \Leafo\ScssPhp\Compiler();
+            $scssc->setSourceMap(Leafo\ScssPhp\Compiler::SOURCE_MAP_FILE);
             $css = $scssc->compile($scss);
             file_put_contents($css_path, $css);
         }
